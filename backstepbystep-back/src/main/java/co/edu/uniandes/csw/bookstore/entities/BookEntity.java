@@ -51,6 +51,7 @@ public class BookEntity extends BaseEntity implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date publishDate;
     private String description;
+    private Boolean novedad;
     
     private Boolean esBestseller;
     
@@ -275,5 +276,19 @@ public class BookEntity extends BaseEntity implements Serializable {
      */
     public void setClientes(List<ClienteEntity> clientes) {
         this.clientes = clientes;
+    }
+
+    /**
+     * @return the novedad
+     */
+    public Boolean getNovedad() {
+        return novedad;
+    }
+
+    /**
+     * @param novedad the novedad to set
+     */
+    public void setNovedad(Boolean novedad) {
+        this.novedad = novedad;
     }
 }
