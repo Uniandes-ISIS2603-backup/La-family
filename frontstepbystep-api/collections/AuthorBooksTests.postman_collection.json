@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "73950f7b-1600-4b99-baab-592b68945965",
-		"name": "ClientesBooks-Tests",
+		"_postman_id": "baacb061-a4b4-4388-a81d-d17ec343a908",
+		"name": "AuthorBooksTests",
 		"description": "Colección de pruebas sobre el recurso AuthorBook",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -81,7 +81,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"precio\":12000,\n    \"categoria\":\"Terror\",\n    \"esBestseller\": true,\n    \"description\": \"Jorge Fondebrider traza un mundo fantÃ¡stico con mapas de la geografÃ\\u00ada real y de sus mitologÃ\\u00adas, observando a los hombres lobo que han vivido en la imaginaciÃ³n de Europa y AmÃ©rica.\",\n    \"image\": \"https://static.iris.net.co/arcadia/upload/images/2017/7/31/64899_1.jpg\",\n    \"isbn\": \"930330149-8\",\n    \"editorial\": { \"id\": {{new_id_e}} },\n    \"name\": \"Historia de los hombres lobo 2\",\n    \"publishingdate\": \"2000-08-20T00:00:00-05:00\"\n}"
+					"raw": "{\n    \"precio\":12000,\n    \"categoria\":\"Terror\",\n    \"esBestseller\": true,\n    \"description\": \"Jorge Fondebrider traza un mundo fantÃ¡stico con mapas de la geografÃ\\u00ada real y de sus mitologÃ\\u00adas, observando a los hombres lobo que han vivido en la imaginaciÃ³n de Europa y AmÃ©rica.\",\n    \"image\": \"https://static.iris.net.co/arcadia/upload/images/2017/7/31/64899_1.jpg\",\n    \"isbn\": \"930330149-8\",\n    \"editorial\": { \"id\": {{new_id_e}},\n                   \"name\": \"Norma\" },\n    \"name\": \"Historia de los hombres lobo 2\",\n    \"publishingdate\": \"2000-08-20T00:00:00-05:00\"\n}"
 				},
 				"url": {
 					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/books",
@@ -128,7 +128,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"description\": \"Descripción para el libro 2\",\n    \"image\": \"https://static.iris.net.co/arcadia/upload/images/2017/7/31/64899_1.jpg\",\n    \"isbn\": \"930330149-2\",\n    \"editorial\": { \"id\": {{new_id_e}} ,\n                   \"name\": \"Norma\"},\n    \"name\": \"Historia de los programadores\",\n    \"publishingdate\": \"2003-08-20T00:00:00-05:00\",\n      \"precio\":12000,\n    \"categoria\":\"Niños\",\n    \"esBestseller\": true\n}"
+					"raw": "{\n    \"precio\":12000,\n    \"categoria\":\"Terror\",\n    \"esBestseller\": true,\n    \"description\": \"Descripción para el libro 2\",\n    \"image\": \"https://static.iris.net.co/arcadia/upload/images/2017/7/31/64899_1.jpg\",\n    \"isbn\": \"930330149-2\",\n    \"editorial\": { \"id\": {{new_id_e}} ,\n                   \"name\": \"Norma\"},\n    \"name\": \"Historia de los programadores\",\n    \"publishingdate\": \"2003-08-20T00:00:00-05:00\"\n}"
 				},
 				"url": {
 					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/books",
@@ -148,19 +148,19 @@
 			"response": []
 		},
 		{
-			"name": "Crear un cliente",
+			"name": "Crear un autor",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "f9f90381-0e2e-4579-93ea-3adddfb389c7",
+						"type": "text/javascript",
 						"exec": [
 							"var data = JSON.parse(responseBody);",
 							"postman.setGlobalVariable(\"new_id_a\",data.id);",
 							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
 							"console.log(data.id);"
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
@@ -174,10 +174,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\n        \"correo\": \"styles@vivo.com\",\n        \"username\": \"papu\",\n        \"contrasenia\": \"hs\",\n        \"nombre\": \"Harry Styles\",\n        \"monedero\": 20000000000\n    }"
+					"raw": "    {\n        \"birthDate\": \"1927-03-03T00:00:00-05:00\",\n        \"description\": \"fue un escritor, guionista, editor y periodista colombiano. En 1982 recibió el Premio Nobel de Literatura.\",\n        \"image\": \"https://commons.wikimedia.org/wiki/File:Gabriel_Garcia_Marquez.jpg\",\n        \"name\": \"Gabriel José de la Concordia García Márquez\"\n    }"
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/clientes",
+					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/authors",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -186,7 +186,7 @@
 					"path": [
 						"frontstepbystep-api",
 						"api",
-						"clientes"
+						"authors"
 					]
 				},
 				"description": "**Release: Paso-5**\r\n\r\nCrea un nuevo autor. El Id es inicializado por la BD y se debe ver en la respuesta.\r\nPara la prueba, se guarda el id en una variable que será utilizada en otras peticiones de la colección.\r\n\r\n**Código http esperado: 200**"
@@ -194,16 +194,16 @@
 			"response": []
 		},
 		{
-			"name": "Agregar un libro a un cliente",
+			"name": "Agregar un libro a un autor",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "5295fcb5-7252-463d-b81a-5124c1a067be",
+						"type": "text/javascript",
 						"exec": [
 							"tests[\"No genera error en el Post\"] = responseCode.code === 200;"
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
@@ -220,7 +220,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/clientes/{{new_id_a}}/books/{{new_id_b}}",
+					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/authors/{{new_id_a}}/books/{{new_id_b}}",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -229,7 +229,7 @@
 					"path": [
 						"frontstepbystep-api",
 						"api",
-						"clientes",
+						"authors",
 						"{{new_id_a}}",
 						"books",
 						"{{new_id_b}}"
@@ -240,17 +240,17 @@
 			"response": []
 		},
 		{
-			"name": "Agregar un libro que no existe a un cliente",
+			"name": "Agregar un libro que no existe a un autor",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "e3c06212-e39e-4bc3-9fd1-8abbd1c29ace",
+						"type": "text/javascript",
 						"exec": [
 							"tests[\"No se deberia asociar el author ya que el book no existe.\"] = responseCode.code === 404;",
 							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /books/0 no existe.\");"
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
@@ -262,7 +262,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/clientes/{{new_id_a}}/books/0",
+					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/authors/{{new_id_a}}/books/0",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -271,7 +271,7 @@
 					"path": [
 						"frontstepbystep-api",
 						"api",
-						"clientes",
+						"authors",
 						"{{new_id_a}}",
 						"books",
 						"0"
@@ -282,18 +282,18 @@
 			"response": []
 		},
 		{
-			"name": "Obtener un libro de un cliente",
+			"name": "Obtener un libro de un autor",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "e7e73fe8-8e21-4eae-a1bf-973c5ccfbfbc",
+						"type": "text/javascript",
 						"exec": [
 							"console.log(responseBody);",
 							"var data = JSON.parse(responseBody);",
 							"tests[\"No genera error en el Get\"] = responseCode.code === 200;"
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
@@ -301,7 +301,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/clientes/{{new_id_a}}/books/{{new_id_b}}",
+					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/authors/{{new_id_a}}/books/{{new_id_b}}",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -310,7 +310,7 @@
 					"path": [
 						"frontstepbystep-api",
 						"api",
-						"clientes",
+						"authors",
 						"{{new_id_a}}",
 						"books",
 						"{{new_id_b}}"
@@ -321,17 +321,17 @@
 			"response": []
 		},
 		{
-			"name": "Obtener un libro que no existe de un cliente",
+			"name": "Obtener un libro que no existe de un autor",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "9fe51cc4-6ef5-40d2-bc5f-e1200af00028",
+						"type": "text/javascript",
 						"exec": [
 							"tests[\"No se deberia obtener ningun book ya que el book no existe.\"] = responseCode.code === 404;",
 							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /books/0 no existe.\");"
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
@@ -339,7 +339,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/clientes/{{new_id_a}}/books/0",
+					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/authors/{{new_id_a}}/books/0",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -348,7 +348,7 @@
 					"path": [
 						"frontstepbystep-api",
 						"api",
-						"clientes",
+						"authors",
 						"{{new_id_a}}",
 						"books",
 						"0"
@@ -359,17 +359,17 @@
 			"response": []
 		},
 		{
-			"name": "Obtener un libro no asociado de un cliente",
+			"name": "Obtener un libro no asociado de un autor",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "10a04ef5-aca6-43ae-bd0a-b1006aa19487",
+						"type": "text/javascript",
 						"exec": [
 							"tests[\"No se puede obtener un book que no esta asociado\"] = responseCode.code === 412;",
 							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El libro no está asociado al autor\");"
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
@@ -377,7 +377,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/clientes/{{new_id_a}}/books/{{new_id_b2}}",
+					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/authors/{{new_id_a}}/books/{{new_id_b2}}",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -386,7 +386,7 @@
 					"path": [
 						"frontstepbystep-api",
 						"api",
-						"clientes",
+						"authors",
 						"{{new_id_a}}",
 						"books",
 						"{{new_id_b2}}"
@@ -397,16 +397,16 @@
 			"response": []
 		},
 		{
-			"name": "Asociar libros a un cliente",
+			"name": "Asociar libros a un autor",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "c7c5215a-ed1c-498e-9d19-9f5570cfd17d",
+						"type": "text/javascript",
 						"exec": [
 							"tests[\"No genera error en el Put\"] = responseCode.code === 200;"
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
@@ -423,7 +423,7 @@
 					"raw": "[{\n    \"description\": \"Jorge Fondebrider traza un mundo fantÃƒÂ¡stico con mapas de la geografÃƒ\\u00ada real y de sus mitologÃƒ\\u00adas, observando a los hombres lobo que han vivido en la imaginaciÃƒÂ³n de Europa y AmÃƒÂ©rica.\",\n    \"editorial\": {\n        \"id\": {{new_id_e}},\n        \"name\": \"Norma\"\n    },\n    \"id\": {{new_id_b}},\n    \"image\": \"https://static.iris.net.co/arcadia/upload/images/2017/7/31/64899_1.jpg\",\n    \"isbn\": \"930330149-8\",\n    \"name\": \"Historia de los hombres lobo 2\",\n    \"publishingdate\": \"2000-08-20T00:00:00-05:00\"\n},\n{\n    \"description\": \"DescripciÃ³n para el libro 2\",\n    \"editorial\": {\n        \"id\": {{new_id_e}},\n        \"name\": \"Norma\"\n    },\n    \"id\": {{new_id_b2}},\n    \"image\": \"https://static.iris.net.co/arcadia/upload/images/2017/7/31/64899_1.jpg\",\n    \"isbn\": \"930330149-2\",\n    \"name\": \"Historia de los programadores\",\n    \"publishingdate\": \"2003-08-20T00:00:00-05:00\"\n}]"
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/clientes/{{new_id_a}}/books",
+					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/authors/{{new_id_a}}/books",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -432,7 +432,7 @@
 					"path": [
 						"frontstepbystep-api",
 						"api",
-						"clientes",
+						"authors",
 						"{{new_id_a}}",
 						"books"
 					]
@@ -442,18 +442,18 @@
 			"response": []
 		},
 		{
-			"name": "Obtener los libros de un cliente",
+			"name": "Obtener los libros de un autor",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "49c94c15-1d54-43ee-adef-aec230710223",
+						"type": "text/javascript",
 						"exec": [
 							"var data= JSON.parse(responseBody);",
 							"tests[\"No genera error en el Get\"] = responseCode.code === 200;",
 							"tests[\"books count - author\"] = data.length >= 1;"
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
@@ -461,7 +461,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/clientes/{{new_id_a}}/books",
+					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/authors/{{new_id_a}}/books",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -470,7 +470,7 @@
 					"path": [
 						"frontstepbystep-api",
 						"api",
-						"clientes",
+						"authors",
 						"{{new_id_a}}",
 						"books"
 					]
@@ -480,17 +480,17 @@
 			"response": []
 		},
 		{
-			"name": "Asociar libros que no existen a un cliente",
+			"name": "Asociar libros que no existen a un autor",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "5f1389a0-da68-45bc-90aa-eb08f3c8ac36",
+						"type": "text/javascript",
 						"exec": [
 							"tests[\"No se pueden asociar los books ya que estos no existen\"] = responseCode.code === 404;",
 							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /books/0 no existe.\");"
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
@@ -507,7 +507,7 @@
 					"raw": "[{\n    \"description\": \"Jorge Fondebrider traza un mundo fantastico con mapas de la geografia real y de sus mitologias, observando a los hombres lobo que han vivido en la imaginacion de Europa y America.\",\n    \"id\": 0,\n    \"image\": \"https://static.iris.net.co/arcadia/upload/images/2017/7/31/64899_1.jpg\",\n    \"isbn\": \"930330149-8\",\n    \"name\": \"Historia de los hombres lobo 2\",\n    \"publishingdate\": \"2000-08-20T00:00:00-05:00\"\n}\n]"
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/clientes/{{new_id_a}}/books",
+					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/authors/{{new_id_a}}/books",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -516,7 +516,7 @@
 					"path": [
 						"frontstepbystep-api",
 						"api",
-						"clientes",
+						"authors",
 						"{{new_id_a}}",
 						"books"
 					]
@@ -526,16 +526,16 @@
 			"response": []
 		},
 		{
-			"name": "Borrarle un libro a un cliente",
+			"name": "Borrarle un libro a un author",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "9510b6cd-b566-4cfa-b16f-9c783800176d",
+						"type": "text/javascript",
 						"exec": [
 							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
@@ -547,7 +547,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/clientes/{{new_id_a}}/books/{{new_id_b}}",
+					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/authors/{{new_id_a}}/books/{{new_id_b}}",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -556,7 +556,7 @@
 					"path": [
 						"frontstepbystep-api",
 						"api",
-						"clientes",
+						"authors",
 						"{{new_id_a}}",
 						"books",
 						"{{new_id_b}}"
@@ -567,16 +567,16 @@
 			"response": []
 		},
 		{
-			"name": "Borrarle un libro 2 a un cliente",
+			"name": "Borrarle un libro 2 a un autor",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "dca29117-b352-4fc0-893d-46bfdd4cd9bf",
+						"type": "text/javascript",
 						"exec": [
 							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
@@ -588,7 +588,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/clientes/{{new_id_a}}/books/{{new_id_b2}}",
+					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/authors/{{new_id_a}}/books/{{new_id_b2}}",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -597,7 +597,7 @@
 					"path": [
 						"frontstepbystep-api",
 						"api",
-						"clientes",
+						"authors",
 						"{{new_id_a}}",
 						"books",
 						"{{new_id_b2}}"
@@ -608,17 +608,17 @@
 			"response": []
 		},
 		{
-			"name": "Borrarle un libro a un cliente que no existe",
+			"name": "Borrarle un libro a un autor que no existe",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "91d9959e-4825-4dd7-88e3-3e33b988c765",
+						"type": "text/javascript",
 						"exec": [
 							"tests[\"No se deberia eliminar ninguna asociacion ya que el author no existe\"] = responseCode.code === 404;",
 							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /authors/0 no existe.\");"
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
@@ -630,7 +630,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/clientes/0/books/{{new_id_b}}",
+					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/authors/0/books/{{new_id_b}}",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -639,7 +639,7 @@
 					"path": [
 						"frontstepbystep-api",
 						"api",
-						"clientes",
+						"authors",
 						"0",
 						"books",
 						"{{new_id_b}}"
@@ -650,17 +650,17 @@
 			"response": []
 		},
 		{
-			"name": "Borrar un libro que no existe a un cliente",
+			"name": "Borrar un libro que no existe a un autor",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "db442b05-4aea-4f64-9db1-a28176069f5e",
+						"type": "text/javascript",
 						"exec": [
 							"tests[\"No se deberia eliminar ninguna asociacion ya que el book no existe\"] = responseCode.code === 404;",
 							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /books/0 no existe.\");"
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
@@ -672,7 +672,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/clientes/{{new_id_a}}/books/0",
+					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/authors/{{new_id_a}}/books/0",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -681,7 +681,7 @@
 					"path": [
 						"frontstepbystep-api",
 						"api",
-						"clientes",
+						"authors",
 						"{{new_id_a}}",
 						"books",
 						"0"
@@ -770,16 +770,16 @@
 			"response": []
 		},
 		{
-			"name": "Borrar un cliente",
+			"name": "Borrar un autor",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "b1ff16df-2255-4221-9b63-b026ee61a544",
+						"type": "text/javascript",
 						"exec": [
 							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
@@ -791,7 +791,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/clientes/{{new_id_a}}",
+					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/authors/{{new_id_a}}",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -800,7 +800,7 @@
 					"path": [
 						"frontstepbystep-api",
 						"api",
-						"clientes",
+						"authors",
 						"{{new_id_a}}"
 					]
 				},
