@@ -135,4 +135,47 @@ public class BookPersistence {
         LOGGER.log(Level.INFO, "Saliendo de consultar libros por isbn ", isbn);
         return result;
     }
+    
+    
+    public BookEntity findByName(String name) {
+        LOGGER.log(Level.INFO, "Consultando libros por name ", name);
+        // Se crea un query para buscar libros con el isbn que recibe el método como argumento. ":isbn" es un placeholder que debe ser remplazado
+        TypedQuery query = em.createQuery("Select e From BookEntity e where e.name = :name", BookEntity.class);
+        // Se remplaza el placeholder ":isbn" con el valor del argumento 
+        query = query.setParameter("name", name);
+        // Se invoca el query se obtiene la lista resultado
+        List<BookEntity> sameISBN = query.getResultList();
+        BookEntity result;
+        if (sameISBN == null) {
+            result = null;
+        } else if (sameISBN.isEmpty()) {
+            result = null;
+        } else {
+            result = sameISBN.get(0);
+        }
+        LOGGER.log(Level.INFO, "Saliendo de consultar libros por nombre ", name);
+        return result;
+    }
+    
+    public BookEntity findByCategoria(String cate) {
+        LOGGER.log(Level.INFO, "Consultando libros por categoria {0} ", cate);
+        // Se crea un query para buscar libros con el isbn que recibe el método como argumento. ":isbn" es un placeholder que debe ser remplazado
+        TypedQuery query = em.createQuery("Select e From BookEntity e where e.categoria = :cate", BookEntity.class);
+        // Se remplaza el placeholder ":isbn" con el valor del argumento 
+        query = query.setParameter("cate", cate);
+        // Se invoca el query se obtiene la lista resultado
+        List<BookEntity> sameISBN = query.getResultList();
+        BookEntity result;
+        if (sameISBN == null) {
+            result = null;
+        } else if (sameISBN.isEmpty()) {
+            result = null;
+        } else {
+            result = sameISBN.get(0);
+        }
+        LOGGER.log(Level.INFO, "Saliendo de consultar libros por categoria ", cate);
+        return result;
+    }
+    
+    
 }
