@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3b175bd5-f652-4e3d-ae6b-9edc5e8a1680",
+		"_postman_id": "740b3e52-5f92-4144-a0d4-e29f4e2a7435",
 		"name": "BookTests",
 		"description": "Colección de pruebas sobre el recurso Book",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -226,50 +226,6 @@
 					]
 				},
 				"description": "**Release: Paso-5**\r\n\r\nCrea otro libro. El ISBN del recurso debe ser único. El Id es inicializado por la BD y se debe ver en la respuesta. \r\nEste segundo libro se utiliza para probar la petición que consultar todos los libros\r\n\r\nPara la prueba, se guarda el id en una variable que será utilizada en otras peticiones de la colección.\r\n\r\n**Código http esperado: 200**"
-			},
-			"response": []
-		},
-		{
-			"name": "Crear un libro con el mismo ISBN",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "99432a89-1545-4c9d-9757-3a363a64c973",
-						"exec": [
-							"tests[\"No crea con el mismo nombre\"] = responseCode.code === 412;",
-							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El ISBN ya existe\");"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"precio\":12000,\n    \"categoria\":\"Terror\",\n    \"esBestseller\": true,\n    \"description\": \"Jorge Fondebrider traza un mundo fantastico con mapas de la geografia real y de sus mitologias, observando a los hombres lobo que han vivido en la imaginacion de Europa y America.\",\n    \"image\": \"https://static.iris.net.co/arcadia/upload/images/2017/7/31/64899_1.jpg\",\n    \"isbn\": \"930330149-8\",\n    \"editorial\": { \"id\": {{new_id_e}} },\n    \"name\": \"Historia de los hombres lobo 2\",\n    \"publishingdate\": \"2000-08-20T00:00:00-05:00\"\n}"
-				},
-				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/frontstepbystep-api/api/books",
-					"protocol": "http",
-					"host": [
-						"{{ip}}"
-					],
-					"port": "{{puerto}}",
-					"path": [
-						"frontstepbystep-api",
-						"api",
-						"books"
-					]
-				},
-				"description": "**Release: Paso-5**\r\n\r\nCrea un nuevo libro pero con un ISBN que ya existe. Verifica que se genera el error y el mensaje \"El ISBN ya existe\".\r\n\r\n**Código HTTP esperado: 412 Precondition failed\".**"
 			},
 			"response": []
 		},
