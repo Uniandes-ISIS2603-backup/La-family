@@ -129,7 +129,7 @@ public class BookDetailDTO extends BookDTO implements Serializable {
     // relación  cero o muchos author
     private List<AuthorDTO> authors;
     
-    //private List<ClienteDTO> clientes;
+    private List<ClienteDTO> clientes;
 
     public BookDetailDTO() {
         super();
@@ -154,12 +154,12 @@ public class BookDetailDTO extends BookDTO implements Serializable {
                 authors.add(new AuthorDTO(entityAuthor));
             }
         }
-//         if (bookEntity.getClientes() != null) {
-//            clientes = new ArrayList<>();
-//            for (ClienteEntity entityCliente : bookEntity.getClientes()) {
-//                clientes.add(new ClienteDTO(entityCliente));
-//            }
-//        }
+         if (bookEntity.getClientes() != null) {
+            clientes = new ArrayList<>();
+            for (ClienteEntity entityCliente : bookEntity.getClientes()) {
+                clientes.add(new ClienteDTO(entityCliente));
+            }
+        }
     }
 
     /**
@@ -184,13 +184,13 @@ public class BookDetailDTO extends BookDTO implements Serializable {
             }
             bookEntity.setAuthors(authorsEntity);
         }
-//         if (clientes != null) {
-//            List<ClienteEntity> clientesEntity = new ArrayList<>();
-//            for (ClienteDTO dtoCliente : clientes) {
-//                clientesEntity.add(dtoCliente.toEntity());
-//            }
-//            bookEntity.setClientes(clientesEntity);
-//        }
+         if (clientes != null) {
+            List<ClienteEntity> clientesEntity = new ArrayList<>();
+            for (ClienteDTO dtoCliente : clientes) {
+                clientesEntity.add(dtoCliente.toEntity());
+            }
+            bookEntity.setClientes(clientesEntity);
+        }
         return bookEntity;
     }
 
@@ -233,14 +233,14 @@ public class BookDetailDTO extends BookDTO implements Serializable {
     /**
      * @return the clientes
      */
-//    public List<ClienteDTO> getClientes() {
-//        return clientes;
-//    }
+    public List<ClienteDTO> getClientes() {
+        return clientes;
+    }
 
     /**
      * @param clientes the clientes to set
      */
-//    public void setClientes(List<ClienteDTO> clientes) {
-//        this.clientes = clientes;
-//    }
+    public void setClientes(List<ClienteDTO> clientes) {
+        this.clientes = clientes;
+    }
 }
