@@ -34,6 +34,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamDoubleValue;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -55,6 +56,7 @@ public class BookEntity extends BaseEntity implements Serializable {
     
     private String categoria;
     
+     @PodamDoubleValue(minValue = 1.0)
     private Double precio;
 
     @PodamExclude

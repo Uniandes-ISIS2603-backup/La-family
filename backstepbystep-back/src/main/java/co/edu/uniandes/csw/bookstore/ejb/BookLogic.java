@@ -69,6 +69,21 @@ public class BookLogic {
         if (persistence.findByISBN(bookEntity.getIsbn()) != null) {
             throw new BusinessLogicException("El ISBN ya existe");
         }
+        
+        if (!validateName(bookEntity.getName())) {
+            throw new BusinessLogicException("El Nombre es inválido");
+        }
+        if (persistence.findByName(bookEntity.getName()) != null) {
+            throw new BusinessLogicException("El Nombre ya existe");
+        }
+        if(bookEntity.getPrecio()<=0)
+        {
+             throw new BusinessLogicException("El Precio es incorrecto");
+        }
+         if(bookEntity.getPrecio()==null)
+        {
+             throw new BusinessLogicException("El Precio es incorrecto");
+        }
         persistence.create(bookEntity);
         LOGGER.log(Level.INFO, "Termina proceso de creación del libro");
         return bookEntity;
@@ -144,5 +159,9 @@ public class BookLogic {
      */
     private boolean validateISBN(String isbn) {
         return !(isbn == null || isbn.isEmpty());
+    }
+    
+    private boolean validateName(String name ) {
+        return !(name == null || name.isEmpty());
     }
 }
