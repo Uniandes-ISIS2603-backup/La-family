@@ -24,7 +24,7 @@ public class ClientePersistence
     
     private static final Logger LOGGER = Logger.getLogger(ClientePersistence.class.getName());
     
-    @PersistenceContext (unitName = "bookstorePU")
+    @PersistenceContext (unitName = "BookStorePU")
     protected EntityManager em;
      
     public ClienteEntity create(ClienteEntity usuarioEntity)
