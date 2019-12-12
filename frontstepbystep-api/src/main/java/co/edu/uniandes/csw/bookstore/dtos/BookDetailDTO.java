@@ -127,6 +127,8 @@ public class BookDetailDTO extends BookDTO implements Serializable {
 
     // relación  cero o muchos author
     private List<AuthorDTO> authors;
+    
+    //private List<ClienteDTO> clientes;
 
     public BookDetailDTO() {
         super();

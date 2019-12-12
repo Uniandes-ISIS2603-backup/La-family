@@ -262,4 +262,18 @@ public class BookEntity extends BaseEntity implements Serializable {
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
+
+    /**
+     * @return the clientes
+     */
+    public List<ClienteEntity> getClientes() {
+        return clientes;
+    }
+
+    /**
+     * @param clientes the clientes to set
+     */
+    public void setClientes(List<ClienteEntity> clientes) {
+        this.clientes = clientes;
+    }
 }
