@@ -25,6 +25,7 @@ package co.edu.uniandes.csw.bookstore.dtos;
 
 import co.edu.uniandes.csw.bookstore.entities.AuthorEntity;
 import co.edu.uniandes.csw.bookstore.entities.BookEntity;
+import co.edu.uniandes.csw.bookstore.entities.ClienteEntity;
 import co.edu.uniandes.csw.bookstore.entities.ReviewEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -153,6 +154,12 @@ public class BookDetailDTO extends BookDTO implements Serializable {
                 authors.add(new AuthorDTO(entityAuthor));
             }
         }
+//         if (bookEntity.getClientes() != null) {
+//            clientes = new ArrayList<>();
+//            for (ClienteEntity entityCliente : bookEntity.getClientes()) {
+//                clientes.add(new ClienteDTO(entityCliente));
+//            }
+//        }
     }
 
     /**
@@ -177,6 +184,13 @@ public class BookDetailDTO extends BookDTO implements Serializable {
             }
             bookEntity.setAuthors(authorsEntity);
         }
+//         if (clientes != null) {
+//            List<ClienteEntity> clientesEntity = new ArrayList<>();
+//            for (ClienteDTO dtoCliente : clientes) {
+//                clientesEntity.add(dtoCliente.toEntity());
+//            }
+//            bookEntity.setClientes(clientesEntity);
+//        }
         return bookEntity;
     }
 
@@ -215,4 +229,18 @@ public class BookDetailDTO extends BookDTO implements Serializable {
     public void setAuthors(List<AuthorDTO> authors) {
         this.authors = authors;
     }
+
+    /**
+     * @return the clientes
+     */
+//    public List<ClienteDTO> getClientes() {
+//        return clientes;
+//    }
+
+    /**
+     * @param clientes the clientes to set
+     */
+//    public void setClientes(List<ClienteDTO> clientes) {
+//        this.clientes = clientes;
+//    }
 }
