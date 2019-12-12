@@ -40,8 +40,8 @@ public class ClienteLogic
            throw new BusinessLogicException("La contraseña no puede ser nula.");
        if(cliente.getCorreo()== null)
            throw new BusinessLogicException("El correo no puede ser nulo.");
-       if(cliente.getCorreo().contains("@") == false || cliente.getCorreo().contains(".")==false)
-           throw new BusinessLogicException("Correo no válido.");
+      // if(cliente.getCorreo().contains("@") == false || cliente.getCorreo().contains(".")==false)
+        //   throw new BusinessLogicException("Correo no válido.");
        if(cliente.getMonedero() < 0.0)
            throw new BusinessLogicException("El monedero no pude ser negativo.");
        
@@ -112,8 +112,8 @@ public class ClienteLogic
            throw new BusinessLogicException("La contraseña no puede ser nula.");
         if(cliente.getCorreo()== null)
            throw new BusinessLogicException("El correo no puede ser nulo.");
-       if(cliente.getCorreo().contains("@") == false || cliente.getCorreo().contains(".")==false)
-           throw new BusinessLogicException("Correo no válido.");
+      // if(cliente.getCorreo().contains("@") == false || cliente.getCorreo().contains(".")==false)
+        //   throw new BusinessLogicException("Correo no válido.");
        if(cliente.getMonedero() < 0.0)
            throw new BusinessLogicException("El monedero no pude ser negativo.");
        
