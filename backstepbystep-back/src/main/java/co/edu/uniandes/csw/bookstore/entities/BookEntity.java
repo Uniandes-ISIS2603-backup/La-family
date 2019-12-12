@@ -62,6 +62,8 @@ public class BookEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @ManyToOne
     private EditorialEntity editorial;
+    
+  
 
     @PodamExclude
     @OneToMany(mappedBy = "book", cascade = CascadeType.PERSIST, orphanRemoval = true)
@@ -70,6 +72,10 @@ public class BookEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @ManyToMany
     private List<AuthorEntity> authors = new ArrayList<AuthorEntity>();
+    
+    @PodamExclude
+    @ManyToMany
+    private List<ClienteEntity> clientes = new ArrayList<ClienteEntity>();
 
     /**
      * Devuelve el nombre del libro.
