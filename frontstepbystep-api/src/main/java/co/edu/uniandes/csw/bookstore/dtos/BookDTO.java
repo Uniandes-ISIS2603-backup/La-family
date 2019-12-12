@@ -78,6 +78,9 @@ public class BookDTO implements Serializable {
     private String description;
     @XmlJavaTypeAdapter(DateAdapter.class)
     private Date publishingdate;
+    private Boolean esBestseller;
+    private String categoria;
+    private Double precio;
 
     /*
     * Relación a una editorial  
@@ -104,6 +107,9 @@ public class BookDTO implements Serializable {
             this.image = bookEntity.getImage();
             this.description = bookEntity.getDescription();
             this.publishingdate = bookEntity.getPublishDate();
+            this.categoria=bookEntity.getCategoria();
+            this.esBestseller=bookEntity.getEsBestseller();
+            this.precio=bookEntity.getPrecio();
             if (bookEntity.getEditorial() != null) {
                 this.editorial = new EditorialDTO(bookEntity.getEditorial());
             } else {
@@ -125,6 +131,9 @@ public class BookDTO implements Serializable {
         bookEntity.setImage(this.image);
         bookEntity.setDescription(this.description);
         bookEntity.setPublishDate(this.publishingdate);
+        bookEntity.setEsBestseller(this.esBestseller);
+        bookEntity.setCategoria(this.categoria);
+        bookEntity.setPrecio(this.precio);
         if (this.editorial != null) {
             bookEntity.setEditorial(this.editorial.toEntity());
         }
@@ -260,5 +269,47 @@ public class BookDTO implements Serializable {
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+    }
+
+    /**
+     * @return the esBestseller
+     */
+    public Boolean getEsBestseller() {
+        return esBestseller;
+    }
+
+    /**
+     * @param esBestseller the esBestseller to set
+     */
+    public void setEsBestseller(Boolean esBestseller) {
+        this.esBestseller = esBestseller;
+    }
+
+    /**
+     * @return the categoria
+     */
+    public String getCategoria() {
+        return categoria;
+    }
+
+    /**
+     * @param categoria the categoria to set
+     */
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    /**
+     * @return the precio
+     */
+    public Double getPrecio() {
+        return precio;
+    }
+
+    /**
+     * @param precio the precio to set
+     */
+    public void setPrecio(Double precio) {
+        this.precio = precio;
     }
 }
