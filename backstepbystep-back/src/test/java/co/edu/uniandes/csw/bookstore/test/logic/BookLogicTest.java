@@ -153,6 +153,8 @@ public class BookLogicTest {
         Assert.assertEquals(newEntity.getDescription(), entity.getDescription());
         Assert.assertEquals(newEntity.getIsbn(), entity.getIsbn());
         Assert.assertEquals(newEntity.getImage(), entity.getImage());
+        Assert.assertEquals(newEntity.getPrecio(), entity.getPrecio());
+         Assert.assertEquals(newEntity.getCategoria(), entity.getCategoria());
     }
 
     /**
@@ -251,6 +253,8 @@ public class BookLogicTest {
         Assert.assertEquals(entity.getDescription(), resultEntity.getDescription());
         Assert.assertEquals(entity.getIsbn(), resultEntity.getIsbn());
         Assert.assertEquals(entity.getImage(), resultEntity.getImage());
+        Assert.assertEquals(entity.getPrecio(), resultEntity.getPrecio());
+         Assert.assertEquals(entity.getCategoria(), resultEntity.getCategoria());
     }
 
     /**
@@ -270,6 +274,10 @@ public class BookLogicTest {
         Assert.assertEquals(pojoEntity.getDescription(), resp.getDescription());
         Assert.assertEquals(pojoEntity.getIsbn(), resp.getIsbn());
         Assert.assertEquals(pojoEntity.getImage(), resp.getImage());
+        Assert.assertEquals(pojoEntity.getCategoria(), resp.getCategoria());
+        Assert.assertEquals(pojoEntity.getPrecio(), resp.getPrecio());
+
+        
     }
 
     /**

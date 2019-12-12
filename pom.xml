@@ -11,8 +11,8 @@
     <name>backstepbystep</name>
  
     <modules>
-        <module>backstepbystep-back</module>
         <module>frontstepbystep-api</module>
+        <module>backstepbystep-back</module>
     </modules>
     
     <repositories>

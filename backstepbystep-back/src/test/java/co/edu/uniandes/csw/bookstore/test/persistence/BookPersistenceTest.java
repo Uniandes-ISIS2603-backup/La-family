@@ -134,6 +134,9 @@ public class BookPersistenceTest {
         Assert.assertEquals(newEntity.getDescription(), entity.getDescription());
         Assert.assertEquals(newEntity.getIsbn(), entity.getIsbn());
         Assert.assertEquals(newEntity.getImage(), entity.getImage());
+        Assert.assertNotNull(entity.getEsBestseller());
+        Assert.assertEquals(newEntity.getCategoria(), entity.getCategoria());
+        Assert.assertEquals(newEntity.getPrecio(), entity.getPrecio());
     }
 
     /**
@@ -166,6 +169,9 @@ public class BookPersistenceTest {
         Assert.assertEquals(entity.getDescription(), newEntity.getDescription());
         Assert.assertEquals(entity.getIsbn(), newEntity.getIsbn());
         Assert.assertEquals(entity.getImage(), newEntity.getImage());
+        Assert.assertNotNull(newEntity.getEsBestseller());
+        Assert.assertEquals(entity.getCategoria(),newEntity.getCategoria());
+        Assert.assertEquals(entity.getPrecio(), newEntity.getPrecio());
     }
 
     /**
@@ -198,6 +204,9 @@ public class BookPersistenceTest {
         Assert.assertEquals(newEntity.getDescription(), resp.getDescription());
         Assert.assertEquals(newEntity.getIsbn(), resp.getIsbn());
         Assert.assertEquals(newEntity.getImage(), resp.getImage());
+        Assert.assertNotNull(newEntity.getEsBestseller());
+        Assert.assertEquals(newEntity.getCategoria(), resp.getCategoria());
+        Assert.assertEquals(newEntity.getPrecio(), resp.getPrecio());
     }
 
     /**
@@ -211,6 +220,32 @@ public class BookPersistenceTest {
         Assert.assertEquals(entity.getIsbn(), newEntity.getIsbn());
 
         newEntity = bookPersistence.findByISBN(null);
+        Assert.assertNull(newEntity);
+    }
+    
+    
+     /**
+     * Prueba para consultasr un Book por ISBN.
+     */
+    @Test
+    public void findBookByNameTest() {
+        BookEntity entity = data.get(0);
+        BookEntity newEntity = bookPersistence.findByName(entity.getName());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getName(), newEntity.getName());
+
+        newEntity = bookPersistence.findByName(null);
+        Assert.assertNull(newEntity);
+    }
+    
+    @Test
+    public void findBookByCategoriaTest() {
+        BookEntity entity = data.get(0);
+        BookEntity newEntity = bookPersistence.findByCategoria(entity.getCategoria());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getCategoria(), newEntity.getCategoria());
+
+        newEntity = bookPersistence.findByCategoria(null);
         Assert.assertNull(newEntity);
     }
 }

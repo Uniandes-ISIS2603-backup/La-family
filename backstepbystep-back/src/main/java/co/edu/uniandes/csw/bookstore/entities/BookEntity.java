@@ -34,6 +34,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamDoubleValue;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -50,6 +51,13 @@ public class BookEntity extends BaseEntity implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date publishDate;
     private String description;
+    
+    private Boolean esBestseller;
+    
+    private String categoria;
+    
+     @PodamDoubleValue(minValue = 1.0)
+    private Double precio;
 
     @PodamExclude
     @ManyToOne
@@ -211,5 +219,47 @@ public class BookEntity extends BaseEntity implements Serializable {
      */
     public void setAuthors(List<AuthorEntity> authors) {
         this.authors = authors;
+    }
+
+    /**
+     * @return the esBestseller
+     */
+    public Boolean getEsBestseller() {
+        return esBestseller;
+    }
+
+    /**
+     * @param esBestseller the esBestseller to set
+     */
+    public void setEsBestseller(Boolean esBestseller) {
+        this.esBestseller = esBestseller;
+    }
+
+    /**
+     * @return the categoria
+     */
+    public String getCategoria() {
+        return categoria;
+    }
+
+    /**
+     * @param categoria the categoria to set
+     */
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    /**
+     * @return the precio
+     */
+    public Double getPrecio() {
+        return precio;
+    }
+
+    /**
+     * @param precio the precio to set
+     */
+    public void setPrecio(Double precio) {
+        this.precio = precio;
     }
 }
